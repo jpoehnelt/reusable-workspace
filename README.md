@@ -9,7 +9,7 @@
 [![Pull Requests](https://img.shields.io/github/issues-pr/jpoehnelt/reusable-workspace)](https://github.com/jpoehnelt/reusable-workspace/pulls)
 [![Last Commit](https://img.shields.io/github/last-commit/jpoehnelt/reusable-workspace)](https://github.com/jpoehnelt/reusable-workspace/commits/main)
 
-This GitHub action will help you to persist your workspace from job to job on your workflow to enable parallel jobs and steps!
+This GitHub action will help you to persist your workspace from job to job in your workflow to enable parallel jobs and steps!
 
 ![Performance](https://raw.githubusercontent.com/jpoehnelt/reusable-workspace/main/impact.gif)
 
