@@ -1,5 +1,14 @@
 # reusable-workspace
 
+[![Test](https://github.com/jpoehnelt/reusable-workspace/actions/workflows/test.yml/badge.svg)](https://github.com/jpoehnelt/reusable-workspace/actions/workflows/test.yml)
+[![Release](https://github.com/jpoehnelt/reusable-workspace/actions/workflows/release.yml/badge.svg)](https://github.com/jpoehnelt/reusable-workspace/actions/workflows/release.yml)
+[![License](https://img.shields.io/github/license/jpoehnelt/reusable-workspace)](https://github.com/jpoehnelt/reusable-workspace/blob/main/LICENSE)
+[![Version](https://img.shields.io/github/v/release/jpoehnelt/reusable-workspace)](https://github.com/jpoehnelt/reusable-workspace/releases)
+[![Contributors](https://img.shields.io/github/contributors/jpoehnelt/reusable-workspace)](https://github.com/jpoehnelt/reusable-workspace/graphs/contributors)
+[![Issues](https://img.shields.io/github/issues/jpoehnelt/reusable-workspace)](https://github.com/jpoehnelt/reusable-workspace/issues)
+[![Pull Requests](https://img.shields.io/github/issues-pr/jpoehnelt/reusable-workspace)](https://github.com/jpoehnelt/reusable-workspace/pulls)
+[![Last Commit](https://img.shields.io/github/last-commit/jpoehnelt/reusable-workspace)](https://github.com/jpoehnelt/reusable-workspace/commits/main)
+
 This GitHub action will help you to persist your workspace from job to job on your workflow to enable parallel jobs and steps!
 
 > Note: This action uses [actions/cache](https://github.com/actions/cache) under the hood.
