@@ -1,0 +1,24 @@
+name: save-workspace
+description: "A action to reuse your workspace across different jobs and parallelize your jobs."
+author: jpoehnelt
+branding:
+  icon: "archive"
+  color: "gray-dark"
+inputs:
+  prefix:
+    description: "Prefix for the workspace key"
+    required: false
+    default: ""
+runs:
+  using: "composite"
+  steps:
+    - name: Generate key
+      run: |
+        echo "_REUSABLE_WORKSPACE_PATH=$GITHUB_WORKSPACE" >> $GITHUB_ENV
+        echo "_REUSABLE_WORKSPACE_KEY=${{ inputs.prefix }}-reusable-workspace-${{ runner.os }}-${{github.workflow_sha}}-${{ github.sha }}" >> $GITHUB_ENV
+      shell: bash
+    - name: Save the workspace
+      uses: actions/cache/save@v4
+      with:
+        path: "${{ env._REUSABLE_WORKSPACE_PATH }}"
+        key: ${{ env._REUSABLE_WORKSPACE_KEY}}

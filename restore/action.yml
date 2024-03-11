@@ -1,0 +1,34 @@
+name: restore-workspace
+description: "A action to reuse your workspace across different jobs and parallelize your jobs."
+author: jpoehnelt
+branding:
+  icon: "archive"
+  color: "gray-dark"
+inputs:
+  fail-on-miss:
+    description: "Fail if the workspace cannot be loaded"
+    required: false
+    default: "true"
+  prefix:
+    description: "Prefix for the workspace key"
+    required: false
+    default: ""
+outputs:
+  hit:
+    description: "A boolean whether the workspace was found"
+    value: ${{ steps.restore.outputs.cache-hit }}
+runs:
+  using: "composite"
+  steps:
+    - name: Generate key
+      run: |
+        echo "_REUSABLE_WORKSPACE_PATH=$GITHUB_WORKSPACE" >> $GITHUB_ENV
+        echo "_REUSABLE_WORKSPACE_KEY=${{ inputs.prefix }}-reusable-workspace-${{ runner.os }}-${{github.workflow_sha}}-${{ github.sha }}" >> $GITHUB_ENV
+      shell: bash
+    - name: Restore the workspace
+      uses: actions/cache/restore@v4
+      id: restore      
+      with:
+        path: ${{ env._REUSABLE_WORKSPACE_PATH }}
+        key: ${{ env._REUSABLE_WORKSPACE_KEY }}
+        fail-on-cache-miss: ${{ inputs.fail-on-miss }}

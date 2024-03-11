@@ -1,0 +1,39 @@
+name: Test
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: touch save.txt
+      - uses: ./save
+        name: save-workspace
+
+  test-should-restore:
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4 # needed for local actions
+      - uses: ./restore
+        name: restore
+        with:
+          fail-on-miss: true
+      - name: test if file exists
+        run: test -f save.txt
+
+  test-should-not-exist-because-of-prefix:
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4 # needed for local actions
+      - uses: ./restore
+        name: restore-with-prefix
+        with:
+          fail-on-miss: false
+          prefix: "should-not-match"
+      - name: save.txt should not exist because of prefix
+        run: test ! -f save.txt
