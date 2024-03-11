@@ -11,7 +11,7 @@
 
 This GitHub action will help you to persist your workspace from job to job on your workflow to enable parallel jobs and steps!
 
-![Performance](https://raw.githubusercontent.com/jpoehnelt/helens/main/impact.gif)
+![Performance](https://raw.githubusercontent.com/jpoehnelt/reusable-workspace/main/impact.gif)
 
 > Note: This action uses [actions/cache](https://github.com/actions/cache) under the hood.
 
